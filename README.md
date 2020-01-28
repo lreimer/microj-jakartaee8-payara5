@@ -1,6 +1,6 @@
-# Microj Service Template for Jakarta EE 8 on Payara 5.194
+# Microj Service Template for Jakarta EE 8 on Payara Micro 5
 
-A Microj CLI service template for Jakarta EE 8 with Java 11 running on Payara 5.194
+A Microj CLI service template for Jakarta EE 8 with Java 11 running on Payara Micro 5.
 
 ## Maintainer
 
