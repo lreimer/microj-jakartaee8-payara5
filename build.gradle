@@ -3,13 +3,64 @@ plugins {
     id 'distribution'
 }
 
-version = "1.0"
-
 distributions {
     main {
         contents {
             from("template/") {
             }
+            into '/'
+        }
+    }
+}
+
+version = '1.0'
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/lreimer/microj")
+            credentials {
+                username = project.findProperty("gpr.username") ?: System.getenv("GPR_USERNAME")
+                password = project.findProperty("gpr.password") ?: System.getenv("GPR_PASSWORD")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            pom {
+                name = 'Microj Service Template for Jakarta EE 8 on Payara Micro 5'
+                description = 'A Microj CLI service template for Jakarta EE 8 with Java 11 running on Payara Micro 5.'
+                url = 'https://github.com/lreimer/microj-jakartaee8-payara5'
+                licenses {
+                    license {
+                        name = 'MIT'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+                organization {
+                    name = 'QAware GmbH'
+                    url = 'https://www.qaware.de'
+                }
+                developers {
+                    developer {
+                        id = 'lreimer'
+                        name = 'Mario-Leander Reimer'
+                        email = 'mario-leander.reimer@qaware.de'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/lreimer/microj-jakartaee8-payara5.git'
+                    developerConnection = 'scm:git:ssh://github.com/lreimer/microj-jakartaee8-payara5.git'
+                    url = 'http://github.com/lreimer/microj-jakartaee8-payara5'
+                }
+            }
+            
+            groupId = 'dev.ops.tools.microj'
+            artifactId = 'microj-jakartaee8-payara5'
+            version = "${project.version}"
+
+            artifact distZip
         }
     }
 }
