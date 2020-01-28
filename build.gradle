@@ -1,0 +1,15 @@
+plugins {
+    id 'maven-publish'
+    id 'distribution'
+}
+
+version = "1.0"
+
+distributions {
+    main {
+        contents {
+            from("template/") {
+            }
+        }
+    }
+}
