@@ -1,32 +1,32 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ${serviceName}
+  name: {{ serviceName }}
 spec:
   ports:
     - port: 8080
       name: http
   selector:
-    app: ${serviceName}
+    app: {{ serviceName }}
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${serviceName}
+  name: {{ serviceName }}
   labels:
-    app: ${serviceName}
+    app: {{ serviceName }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ${serviceName}
+      app: {{ serviceName }}
   template:
     metadata:
       labels:
-        app: ${serviceName}
+        app: {{ serviceName }}
     spec:
       containers:
-        - name: ${serviceName}
-          image: ${serviceName}
+        - name: {{ serviceName }}
+          image: {{ serviceName }}
           ports:
             - containerPort: 8080

@@ -1,12 +1,12 @@
 apiVersion: skaffold/v2alpha1
 kind: Config
 metadata:
-  name: ${serviceName}
+  name: {{ serviceName }}
 build:
   tagPolicy:
     sha256: {}
   artifacts:
-  - image: ${serviceName}
+  - image: {{ serviceName }}
     jib: {}
 deploy:
   kubectl:
@@ -14,7 +14,7 @@ deploy:
     - kubernetes/microservice.yaml
 portForward:
   - resourceType: service
-    resourceName: ${serviceName}
+    resourceName: {{ serviceName }}
     namespace: default
     port: 8080
     localPort: 8080
