@@ -1,5 +1,5 @@
 .gradle/
 build/
-
+.idea/
 gradle-app.setting
 .gradletasknamecache
