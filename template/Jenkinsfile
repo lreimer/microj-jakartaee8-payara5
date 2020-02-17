@@ -1,0 +1,25 @@
+pipeline {
+    agent {
+        label 'docker'
+    }
+
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+        disableConcurrentBuilds()
+        disableResume()
+    }
+
+    triggers {
+        cron('@midnight')
+    }
+
+    stages {
+        stage('Gradle Build') {
+            if (isUnix()) {
+                sh './gradlew --no-daemon --stacktrace --info --continue clean build'
+            } else {
+                bat 'gradlew.bat --no-daemon --stacktrace --info --continue clean build'
+            }
+        }
+    }
+}
