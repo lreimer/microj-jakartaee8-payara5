@@ -18,19 +18,17 @@ dependencies {
 }
 
 payaraMicro {
-    payaraVersion = '5.194'
+    payaraVersion = '5.2020.5'
     deployWar = true
     useUberJar = false
     daemon = false
 }
 
-
-
 jib {
     allowInsecureRegistries = true
 
     from {
-        image = 'qaware/zulu-centos-payara-micro:11.0.5-5.194'
+        image = 'qaware/zulu-centos-payara-micro:11.0.8-5.2020.5'
     }
     container {
         appRoot = '/opt/payara/deployments/ROOT.war'
