@@ -1,5 +1,9 @@
 .gradle/
 build/
 .idea/
+.vscode/
+.settings/
+.project
+.classpath
 gradle-app.setting
 .gradletasknamecache
